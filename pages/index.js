@@ -1,82 +1,66 @@
-import React, { Component } from "react";
+import React from "react";
 import Head from "next/head";
-import Nav from "../components/nav";
 
-class Home extends Component {
-  handleAuthorize = () => {
+import Card from "@material-ui/core/Card";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { makeStyles, CardContent, CardActions } from "@material-ui/core";
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary
   }
+}));
 
-  render() {
-    return (
-      <div>
-        <Head>
-          <title>Home</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+const Home = () => {
+  const classes = useStyles();
 
-        <Nav />
+  const handleAuthorize = () => {};
 
-        <div className="hero">
-          <h1 className="title">Welcome to the LFPB Challenge 2020</h1>
-          <p className="description">To get started, log in with Google.</p>
+  return (
+    <div>
+      <Head>
+        <title>Test App</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+      </Head>
 
-          <div className="row">
-            <div className="card">
-              <button onClick={this.handleAuthorize}>Authorize</button>
-            </div>
-          </div>
-        </div>
-
-        <style jsx>{`
-          .hero {
-            width: 100%;
-            color: #333;
-          }
-          .title {
-            margin: 0;
-            width: 100%;
-            padding-top: 80px;
-            line-height: 1.15;
-            font-size: 48px;
-          }
-          .title,
-          .description {
-            text-align: center;
-          }
-          .row {
-            max-width: 880px;
-            margin: 80px auto 40px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-          }
-          .card {
-            padding: 18px 18px 24px;
-            width: 220px;
-            text-align: left;
-            text-decoration: none;
-            color: #434343;
-            border: 1px solid #9b9b9b;
-          }
-          .card:hover {
-            border-color: #067df7;
-          }
-          .card h3 {
-            margin: 0;
-            color: #067df7;
-            font-size: 18px;
-          }
-          .card p {
-            margin: 0;
-            padding: 12px 0 0;
-            font-size: 13px;
-            color: #333;
-          }
-        `}</style>
+      <div className={classes.root}>
+        <Grid container direction="row">
+          <Grid container xs={12} justify="center" alignItems="center">
+            <Grid item>
+              <Typography variant="h2" align="center" component="h2">
+                Welcome to the LFPB Challenge 2020
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid container justify="center" alignItems="center">
+            <Grid item>
+              <Card variant="outlined">
+                <CardContent>
+                  <Typography variant="body2" component="p">
+                    To get started, log in with Google.
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button onClick={handleAuthorize} color="primary">Authorize</Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          </Grid>
+        </Grid>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Home;
